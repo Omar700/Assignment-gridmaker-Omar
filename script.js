@@ -17,7 +17,8 @@ function createCell() {
     });
     return cell;
 }
-// add row 
+
+
 function addR() {
     const grid = document.getElementById('grid');
     const row = document.createElement('tr');
@@ -28,7 +29,7 @@ function addR() {
     numRows++;
     if (numCols === 0) numCols++; 
 }
-// add column 
+
 function addC() {
     const grid = document.getElementById('grid');
     if (gridIsEmpty()) {
