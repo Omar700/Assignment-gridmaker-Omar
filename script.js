@@ -39,14 +39,28 @@ function addC() {
         numCols++;
     }
 }
-// Remove a row
+
 function removeR() {
-    alert("Clicked Remove Row"); // Replace this line with your code.
+    if (numRows > 0) {
+        const grid = document.getElementById('grid');
+        grid.removeChild(grid.lastChild);
+        numRows--;
+        if (numRows === 0) numCols = 0; 
+    }
 }
 
 // Remove a column
 function removeC() {
-    alert("Clicked Remove Col"); // Replace this line with your code.
+    if (numCols > 0) {
+        const grid = document.getElementById('grid');
+        Array.from(grid.children).forEach(row => {
+            row.removeChild(row.lastChild);
+        });
+        numCols--;
+        if (numCols === 0) {
+            while (numRows > 0) removeR(); 
+        }
+    }
 }
 
 // Set global variable for selected color
