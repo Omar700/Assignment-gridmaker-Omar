@@ -71,15 +71,26 @@ function selectColor(){
 
 // Fill all uncolored cells
 function fillU(){
-    alert("Clicked Fill All Uncolored"); // Replace this line with your code.
+    const grid = document.getElementById('grid');
+    Array.from(grid.querySelectorAll('td')).forEach(cell => {
+        if (!cell.style.backgroundColor) {
+            cell.style.backgroundColor = colorSelected;
+        }
+    });
 }
 
 // Fill all cells
-function fillAll(){
-    alert("Clicked Fill All"); // Replace this line with your code.
+function fillAll() {
+    const grid = document.getElementById('grid');
+    Array.from(grid.querySelectorAll('td')).forEach(cell => {
+        cell.style.backgroundColor = colorSelected;
+    });
 }
 
 // Clear all cells
-function clearAll(){
-    alert("Clicked Clear All"); // Replace this line with your code.
+function clearAll() {
+    const grid = document.getElementById('grid');
+    Array.from(grid.querySelectorAll('td')).forEach(cell => {
+        cell.style.backgroundColor = '';
+    });
 }
