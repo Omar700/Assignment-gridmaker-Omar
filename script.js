@@ -3,16 +3,42 @@ let numRows = 0;
 let numCols = 0;
 let colorSelected; 
 
-// Add a row
+function gridIsEmpty() {
+    return numRows === 0 || numCols === 0;
+}
+
+function createCell() {
+    const cell = document.createElement('td');
+    cell.addEventListener('click', function() {
+        if (colorSelected) {
+            this.style.backgroundColor = colorSelected;
+        }
+    });
+    return cell;
+}
+
 function addR() {
-    alert("Clicked Add Row"); // Replace this line with your code.
+    const grid = document.getElementById('grid');
+    const row = document.createElement('tr');
+    for (let i = 0; i < (numCols === 0 ? 1 : numCols); i++) {
+        row.appendChild(createCell());
+    }
+    grid.appendChild(row);
+    numRows++;
+    if (numCols === 0) numCols++; 
 }
 
-// Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    const grid = document.getElementById('grid');
+    if (gridIsEmpty()) {
+        addR(); 
+    } else {
+        Array.from(grid.children).forEach(row => {
+            row.appendChild(createCell());
+        });
+        numCols++;
+    }
 }
-
 // Remove a row
 function removeR() {
     alert("Clicked Remove Row"); // Replace this line with your code.
